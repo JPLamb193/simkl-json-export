@@ -51,11 +51,6 @@ def make_request(url, headers=None):
     response = requests.get(url, headers=headers)
     return response.json()
 
-def make_txt(titles, file_name):
-    with open(file_name, "w") as file:
-        for entry in titles:
-            file.write(entry+"\n")
-
 config = configparser.ConfigParser()
 config.read('conf.ini')
 client_id = config["CONFIGS"]["client_id"]
@@ -67,8 +62,7 @@ code_verification_url = "https://api.simkl.com/oauth/pin/" + user_code + "?clien
 
 is_user_authenticated = False
 while not is_user_authenticated:
-    print("Go to " + verification_url + " and input the following code")
-    print(user_code)
+    printf("Go to {verification_url} and input the code: {user_code}")
     input("After confirming the code press enter...")
     code_verification_request = make_request(code_verification_url)
     if 'access_token' in code_verification_request:
