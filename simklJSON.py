@@ -62,7 +62,7 @@ code_verification_url = "https://api.simkl.com/oauth/pin/" + user_code + "?clien
 
 is_user_authenticated = False
 while not is_user_authenticated:
-    printf("Go to {verification_url} and input the code: {user_code}")
+    print(f"Go to {verification_url} and input the code: {user_code}")
     input("After confirming the code press enter...")
     code_verification_request = make_request(code_verification_url)
     if 'access_token' in code_verification_request:
